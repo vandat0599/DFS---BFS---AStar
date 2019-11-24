@@ -1,3 +1,5 @@
+import copy
+
 class Literal():
     def __init__(self, liter):
         self.char = liter[1] if '-' in liter else liter[0]
@@ -7,7 +9,7 @@ class Literal():
         return self.char == value.char and self.isNeg == value.isNeg
 
     def getNegative(self):
-        l = self
+        l = copy.copy(self)
         l.char = self.char
         l.isNeg = not(self.isNeg)
         return l
@@ -39,14 +41,28 @@ class Clause:
           res.append(l.getNegative())
         return res
 
+def PLResolve(c1,c2):
+    
+
+def  PLResolution(kb,a):
+    clauses = copy.copy(kb)
+    for literal in a.getNegative():
+        clauses.append(literal.getNegative())
+    new = list()
+    return True
+
 def main():
+    #<data handler>
     a = ""
     kb = list()
     with open("Input.txt") as f:
         lineList = f.readlines()
-    a = lineList[0].strip()
+    a = Clause(lineList[0].strip())
     for i in range(int(lineList[1])):
         kb.append(Clause(lineList[i+2].strip()))
+ 
+    result = PLResolution(kb,a)
     
-    
+    #<data handler/>
+
 main()
