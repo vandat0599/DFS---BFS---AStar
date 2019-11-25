@@ -129,7 +129,7 @@ def main():
     #<data handler>
     a = ""
     kb = list()
-    with open("input_1.txt") as f:
+    with open("input.txt") as f:
         lineList = f.readlines()
     a = Clause(lineList[0].strip())
     for i in range(int(lineList[1])):
